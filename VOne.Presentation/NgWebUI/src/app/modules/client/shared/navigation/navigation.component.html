@@ -1,9 +1,18 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
-            
-            <a class="navbar-brand" href="https://www.creative-tim.com"><img src="../../../../../assets/img/logo.png" alt="CoreNextGen"/></a>
-            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+            <!-- <a class="navbar-brand" href="https://github.com/RajeevSingh273/CoreNextGen">
+                <img src="../../../../../assets/img/logo.png" alt="CoreNextGen" />
+            </a> -->
+            <a class="nav-link" rel="tooltip" [routerLink]="['/home']" data-placement="ml-auto">
+                <!-- <h3>{{BrandName}}</h3>  -->
+                <h3 style="margin:0 0 0">
+                    <span style="color: orange">{{BrandFirstName}}</span>
+                    <span style="color: rgb(55, 98, 105)"> {{BrandSecondName}}</span>
+                </h3>
+            </a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02"
+                aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
@@ -11,43 +20,30 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                        <p class="d-lg-none">Twitter</p>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" routerLinkActive="active-link" [routerLink]="['/home']" data-placement="bottom">
+                        Parent Page
                     </a>
                 </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
-                        <i class="fa fa-facebook-square"></i>
-                        <p class="d-lg-none">Facebook</p>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                        true}" [routerLink]="['/home']" data-placement="bottom">
+                        Java Page
                     </a>
                 </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                        <p class="d-lg-none">Instagram</p>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                        true}" [routerLink]="['/home']" data-placement="bottom">
+                        DotNet Core Page
                     </a>
                 </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/pk2-angular" target="_blank">
-                        <i class="fa fa-github"></i>
-                        <p class="d-lg-none">GitHub</p>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                        true}" [routerLink]="['/home']" data-placement="bottom">
+                        Nodejs Page
                     </a>
                 </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a href="http://pk2-angular.creative-tim.com/documentation/tutorial" class="nav-link" target="_blank"><i class="nc-icon nc-book-bookmark"></i> Documentation</a>
-                </li>
-                <!-- <li class="nav-item" *ngIf="isHome()">
-                    <a href="https://www.creative-tim.com/product/paper-kit-2-pro?ref=pk2-free-local" target="_blank" class="btn btn-danger btn-round disabled">Upgrade to Pro</a>
-                </li> -->
-                <li class="nav-item" *ngIf="!isHome()">
-                    <a [routerLink]="['/home']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Components</a>
-                    <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
-                </li>
-                <li class="nav-item" *ngIf="isDocumentation()">
-                    <a href="https://github.com/creativetimofficial/pk-free-angular/issues?ref=pk2-free-local" target="_blank" class="nav-link">Have an issue</a>
-                </li>
+
             </ul>
         </div>
     </div>

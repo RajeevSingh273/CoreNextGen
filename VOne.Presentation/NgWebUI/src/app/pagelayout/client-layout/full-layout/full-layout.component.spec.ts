@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FullLayoutComponent } from './full-layout.component';
+import { FullLayoutClientComponent } from './full-layout.component';
 
 describe('FullLayoutComponent', () => {
-  let component: FullLayoutComponent;
-  let fixture: ComponentFixture<FullLayoutComponent>;
+  let component: FullLayoutClientComponent;
+  let fixture: ComponentFixture<FullLayoutClientComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FullLayoutComponent ]
+      declarations: [ FullLayoutClientComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FullLayoutComponent);
+    fixture = TestBed.createComponent(FullLayoutClientComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

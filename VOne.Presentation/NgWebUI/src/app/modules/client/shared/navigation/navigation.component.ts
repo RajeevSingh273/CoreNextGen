@@ -10,12 +10,16 @@ export class NavigationComponent implements OnInit {
 
     private toggleButton: any;
     private sidebarVisible: boolean;
-
-    constructor(public location: Location, private element : ElementRef) {
+    public BrandFirstName: string;
+    public BrandSecondName: string;
+    constructor(public location: Location, private element: ElementRef) {
         this.sidebarVisible = false;
+        this.BrandFirstName = '{[(Core)]}';
+        this.BrandSecondName = 'NextGen';
     }
 
     ngOnInit() {
+        // this.BrandName = 'Core NextGen';
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }
@@ -25,20 +29,20 @@ export class NavigationComponent implements OnInit {
         // console.log(html);
         // console.log(toggleButton, 'toggle');
 
-        setTimeout(function(){
+        setTimeout(function () {
             toggleButton.classList.add('toggled');
         }, 500);
         html.classList.add('nav-open');
 
         this.sidebarVisible = true;
-    };
+    }
     sidebarClose() {
         const html = document.getElementsByTagName('html')[0];
         // console.log(html);
         this.toggleButton.classList.remove('toggled');
         this.sidebarVisible = false;
         html.classList.remove('nav-open');
-    };
+    }
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
         // const body = document.getElementsByTagName('body')[0];
@@ -47,25 +51,24 @@ export class NavigationComponent implements OnInit {
         } else {
             this.sidebarClose();
         }
-    };
+    }
     isHome() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-
-        if( titlee === '/home' ) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return true;
+        // if (titlee === '/home') {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
     }
     isDocumentation() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        if( titlee === '/documentation' ) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        // if (titlee === '/documentation') {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+        return true;
     }
 
 }
