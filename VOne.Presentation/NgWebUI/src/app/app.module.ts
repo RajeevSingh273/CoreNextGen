@@ -8,6 +8,10 @@ import { NavigationComponent } from './modules/client/shared/navigation/navigati
 import { FooterComponent } from './modules/client/shared/footer/footer.component';
 import { FullLayoutClientComponent } from './pagelayout/client-layout/full-layout/full-layout.component';
 import { BoxLayoutClientComponent } from './pagelayout/client-layout/box-layout/box-layout.component';
+import { ParentComponent } from './modules/client/parent/parent.component';
+import { JavaComponent } from './modules/client/java/java.component';
+import { DotnetcoreComponent } from './modules/client/dotnetcore/dotnetcore.component';
+import { NodejsComponent } from './modules/client/nodejs/nodejs.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { BoxLayoutClientComponent } from './pagelayout/client-layout/box-layout/
     NavigationComponent,
     FooterComponent,
     FullLayoutClientComponent,
-    BoxLayoutClientComponent
+    BoxLayoutClientComponent,
+    ParentComponent,
+    JavaComponent,
+    DotnetcoreComponent,
+    NodejsComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
