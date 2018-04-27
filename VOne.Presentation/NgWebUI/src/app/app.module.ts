@@ -5,8 +5,6 @@ import { AppComponent } from "./app.component";
 import { LandingComponent } from "./modules/client/landing/landing.component";
 import { NavigationComponent } from "./modules/client/shared/navigation/navigation.component";
 import { FooterComponent } from "./modules/client/shared/footer/footer.component";
-
-import { BoxLayoutClientComponent } from "./pagelayout/client-layout/box-layout/box-layout.component";
 import { ParentComponent } from "./modules/client/parent/parent.component";
 import { JavaComponent } from "./modules/client/java/java.component";
 import { DotnetcoreComponent } from "./modules/client/dotnetcore/dotnetcore.component";
