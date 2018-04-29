@@ -1,4 +1,4 @@
-import { NavigationComponent } from './../../modules/client/shared/navigation/navigation.component';
+import { NavigationComponent } from './../../modules/client/components/shared/navigation/navigation.component';
 import { Component, OnInit, ViewChild, Renderer, Inject, ElementRef } from '@angular/core';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
