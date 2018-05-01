@@ -26,7 +26,7 @@
     }
     .nav-link{
         i{
-            font-size: 16px;
+            font-size: 100px;
             position: relative;
             top: 4px;
             right: 3px;
@@ -52,11 +52,11 @@
             line-height: 1.6;
             margin: $navbar-margin-a;
             padding: $navbar-padding-a;
-            opacity: .8;
-            font-size: $font-size-small;
+            opacity: .7;
+            font-size: $font-size-base;
             text-transform: uppercase;
-            font-weight: 600;
-            color: $default-color;
+            font-weight: 500;
+            color: $default-states-color;            
          }
         .nav-item .nav-link.btn{
             margin: $navbar-margin-a-btn;
@@ -180,9 +180,10 @@
         .active .nav-link:focus,
         .nav-item .nav-link:hover,
         .nav-item .nav-link:focus{
-            background-color: transparent;
+            
             color: $white-color;
             @include opacity(1);
+            background-color: rgba(255,255,255,.1)
         }
         .nav .nav-item a.btn:hover{
             background-color: transparent;
@@ -243,6 +244,7 @@
             border-radius: 3px;
             color: $info-color;
             @include opacity(1);
+            
         }
 
         .dropdown .nav-link:hover .caret,
@@ -288,6 +290,7 @@
             text-align: center;
             padding: $navbar-padding-a-icons;
             margin: $navbar-margin-a-icons;
+            
         }
 
         [class^="pe"] {
@@ -399,7 +402,7 @@
 
     .navbar[class*="bg-"] & .navbar-toggler-bar,
     .navbar.navbar-transparent & .navbar-toggler-bar{
-        background: #fff;
+        background: #922626;
     }
 
     .navbar-toggler-bar{
@@ -435,7 +438,7 @@
 }
 #description-areas .nav-stacked .nav-link.active:before,
 #navtabs-row .nav-stacked .nav-link.active:before{
-    border-right: 11px solid #F1EAE0;
+    border-right: 11px solid #CE841B;
     border-top: 11px solid transparent;
     border-bottom: 11px solid transparent;
     content: "";
