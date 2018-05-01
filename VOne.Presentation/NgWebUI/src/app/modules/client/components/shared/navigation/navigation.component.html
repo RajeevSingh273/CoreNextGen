@@ -20,17 +20,17 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                            <a class="nav-link" rel="tooltip" routerLinkActive="active-link" [routerLink]="['/home']" data-placement="bottom">
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" routerLinkActive="active-link" [routerLink]="['/home']" data-placement="bottom">
                                 Home
                             </a>
-                        </li>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" routerLinkActive="active-link" [routerLink]="['/parent']" data-placement="bottom">
                         Parent Page
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" rel="tooltip" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
                         true}" [routerLink]="['/java']" data-placement="bottom">
                         Java Page
@@ -47,7 +47,19 @@
                         true}" [routerLink]="['/nodejs']" data-placement="bottom">
                         Nodejs Page
                     </a>
-                </li>
+                </li> -->
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true"
+                        aria-expanded="true">Todo List</a>
+                    <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
+                        <li class="dropdown-header">Todo List in</li>
+                        <a class="dropdown-item" [routerLink]="['/java']">Java</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" [routerLink]="['/dotnetcore']">DotNet Core</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" [routerLink]="['/nodejs']">Nodejs</a>
+                    </ul>
+                </div>
 
             </ul>
         </div>

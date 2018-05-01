@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './modules/client/components/landing/landing.component';
-import { ParentComponent } from './modules/client/parent/parent.component';
-import { NodejsComponent } from './modules/client/todolist/nodejs/nodejs.component';
-import { DotnetcoreComponent } from './modules/client/todolist/dotnetcore/dotnetcore.component';
-import { JavaComponent } from './modules/client/todolist/java/java.component';
+import { ParentComponent } from './modules/client/pages/parent/parent.component';
+import { NodejsComponent } from './modules/client/pages/todolist/nodejs/nodejs.component';
+import { DotnetcoreComponent } from './modules/client/pages/todolist/dotnetcore/dotnetcore.component';
+import { JavaComponent } from './modules/client/pages/todolist/java/java.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
