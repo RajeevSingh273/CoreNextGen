@@ -1,5 +1,4 @@
-Open your terminal(cmd/powercell in Windows) and kindly follow the following steps.
-
+Open your terminal(cmd/powercell in Windows and kindly follow the following steps
 Getting started
 
 1. - mkdir todoListApi => To Create a Folder name todoList 
@@ -64,17 +63,23 @@ npm install express --save
   "version": "1.0.0",
   "description": "todolistapi for test",
   "main": "index.js",
-  "scripts": {
+  
+
+"scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon main.js"
   },
-  "author": "rajeev",
+  
+
+"author": "rajeev",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.17.3"
   },
   "dependencies": {
-    "express": "^4.16.3"
+   
+
+ "express": "^4.16.3"
   }
 }
 
@@ -152,4 +157,127 @@ Inside RESTful API server constructor
 inside ConfigureExpressRoute
 Inside ConfigureRoutes
 Todo List RESTful API service is started on port : 3001
+
+
+Interact with a MongoDB
+
+1.  - npm install mongoose --save => install mongoose: Mongoose is an ORM that we use to intract with MongoBD 
+
+Database.
+
+2. Also we need some configuartion file for out application, for this we use npm confic package.
+- npm install config
+
+3. Create a new file under data.layer>dbModels>cd. >todolist.model.js
+
+4. Copy/past bellow code to todolist.model.js file.
+
+"use strict";
+exports.__esModule = true;
+var mongoose = require("mongoose");
+var config = require("config");
+
+var TodoList = new mongoose.Schema({
+    title: {
+    type: String,
+    required: 'Please enter the title'
+  },
+  createdDate: {
+    type: Date,
+    default: Date.now
+  },
+  updatedDate: {
+    type: Date,
+    default: Date.now
+  },
+  status: {
+    type: [{
+      type: String,
+      enum: ['pending', 'ongoing', 'completed']
+    }],
+    default: ['pending']
+  }
+});
+
+var TodoListModelSchema = (function () {
+    function TodoListModelSchema() {
+
+    }
+    TodoListModelSchema.RegisterDriverModelData = function () {
+        var Driver = new mongoose.Schema({
+            TodoList
+        });
+        mongoose.model(config.get('databaseCollection.TodoCollection'), Driver, config.get
+
+('databaseCollection.TodoCollection'));
+    };
+    return TodoListModelSchema;
+}());
+exports.TodoListModelSchema = TodoListModelSchema;
+
+5. now we need to register above todoList schema in our API, for that we have to all following lines in our 
+
+application.js file on root.
+
+after modification our appliaction.js file looks like
+
+"use strict";
+exports.__esModule = true;
+var express = require("express");
+var path = require("path");
+var config = require("config");
+
+
+var TodoListCollection = require("./data.layer/dbModel/todolist.model");
+
+var WebServerApi = (function () {
+    function WebServerApi(app) {
+        this.app = app;
+        console.log("Inside RESTful API server constructor");
+        this.configureExpressRoute();
+        this.webServerPort = config.get("webServerPort");
+        this.configureRoutes(app);
+		this.registerSchema();
+    };	
+
+    WebServerApi.prototype.configureExpressRoute = function () {
+        console.log("inside ConfigureExpressRoute");
+        this.router = express.Router();
+    }; 
+
+    WebServerApi.prototype.logRoutes = function (req, res, next) {
+        console.log(JSON.stringify(req));
+        next();
+    };
+
+    WebServerApi.prototype.configureRoutes = function (app) {
+        console.log("Inside ConfigureRoutes");
+        app.use("/api/", this.router);               
+    };
+	
+	WebServerApi.prototype.registerSchema = function () {        
+        TodoListCollection.TodoListModelSchema.RegisterTodoListModelData();
+    };
+	
+    WebServerApi.prototype.run = function () {
+        this.app.listen(this.webServerPort, function () {
+            console.log("Todo List RESTful API service is started on port : " + this.webServerPort);
+        }.bind({ webServerPort: this.webServerPort }));
+    };
+	
+    WebServerApi.prototype.allowCrossDomain = function (req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+        res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+        next();
+    };
+    return WebServerApi;
+}());
+exports.WebServerApi = WebServerApi;
+
+
+
+
+
+
 
