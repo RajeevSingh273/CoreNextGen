@@ -5,9 +5,6 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './modules/client/components/landing/landing.component';
 import { NavigationComponent } from './modules/client/components/shared/navigation/navigation.component';
 import { FooterComponent } from './modules/client/components/shared/footer/footer.component';
-import { JavaComponent } from './modules/client/pages/todolist/java/java.component';
-import { DotnetcoreComponent } from './modules/client/pages/todolist/dotnetcore/dotnetcore.component';
-import { NodejsComponent } from './modules/client/pages/todolist/nodejs/nodejs.component';
 import { LayoutAdminComponent } from './pagelayout/layout-admin/layout-admin.component';
 import { LayoutClientComponent } from './pagelayout/layout-client/layout-client.component';
 
@@ -17,9 +14,6 @@ import { LayoutClientComponent } from './pagelayout/layout-client/layout-client.
     LandingComponent,
     NavigationComponent,
     FooterComponent,
-    JavaComponent,
-    DotnetcoreComponent,
-    NodejsComponent,
     LayoutAdminComponent,
     LayoutClientComponent,
   ],

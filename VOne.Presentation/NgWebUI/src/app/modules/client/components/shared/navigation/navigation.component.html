@@ -48,7 +48,13 @@
                         Nodejs Page
                     </a>
                 </li> -->
-                <div class="nav-item dropdown">
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                        true}" [routerLink]="['/todolist']" data-placement="bottom">
+                        Todo List
+                    </a>
+                </li>
+                <!-- <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true"
                         aria-expanded="true">Todo List</a>
                     <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
@@ -59,7 +65,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" [routerLink]="['/nodejs']">Nodejs</a>
                     </ul>
-                </div>
+                </div> -->
 
             </ul>
         </div>
