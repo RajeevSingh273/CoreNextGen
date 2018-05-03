@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './modules/client/components/landing/landing.component';
+import { PageNotFoundComponent } from './modules/client/components/shared/page-not-found/page-not-found.component';
 
 
 const appRoutes: Routes = [
@@ -14,7 +15,7 @@ const appRoutes: Routes = [
     path: 'todolist',
     loadChildren: 'app/modules/client/pages/todolist/todolist.module#TodoListModule'
   },
-  { path: '**', component: LandingComponent } // PageNotFoundComponent
+  { path: '**', component: PageNotFoundComponent } // PageNotFoundComponent
 ];
 
 @NgModule({
