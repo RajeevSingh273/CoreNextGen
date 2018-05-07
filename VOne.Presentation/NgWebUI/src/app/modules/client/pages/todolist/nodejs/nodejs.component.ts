@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AddEditListComponent } from './add-edit-list/add-edit-list.component';
 
 @Component({
   selector: 'app-nodejs',
