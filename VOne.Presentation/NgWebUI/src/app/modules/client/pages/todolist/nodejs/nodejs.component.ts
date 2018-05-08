@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AddEditListComponent } from './add-edit-list/add-edit-list.component';
 
@@ -6,8 +7,9 @@ import { AddEditListComponent } from './add-edit-list/add-edit-list.component';
   templateUrl: './nodejs.component.html',
   styleUrls: ['./nodejs.component.css']
 })
-export class NodejsComponent implements OnInit {
 
+export class NodejsComponent implements OnInit {
+  public toggelPopUp = false;
   constructor() { }
 
   ngOnInit() {

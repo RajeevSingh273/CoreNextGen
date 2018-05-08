@@ -7,10 +7,14 @@
     <div class="row">
         <div class="col-md-12 mr-auto ml-auto">
             <div class="col-md-4">
-                <a class="btn btn-primary btn-round" >Add item</a>                
+                <!-- <a class="btn btn-primary btn-round" (click)="toggelPopUp=!toggelPopUp">Add item</a> -->
+                <button type="button" class="btn btn-primary"  (click)="toggelPopUp=!toggelPopUp" data-toggle="modal" data-target="#myModal">
+                        Open modal
+                      </button>
             </div>
             <div class="col-md-4">
-
+                
+                {{toggelPopUp}}
             </div>
             <div class="col-md-4">
 
@@ -50,4 +54,4 @@
         </div>
     </div>
 </div>
-<app-add-edit-list></app-add-edit-list>
+<app-add-edit-list *ngIf="toggelPopUp"></app-add-edit-list>

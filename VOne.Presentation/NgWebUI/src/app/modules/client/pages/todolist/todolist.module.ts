@@ -4,6 +4,7 @@ import { DotnetcoreComponent } from './dotnetcore/dotnetcore.component';
 import { JavaComponent } from './java/java.component';
 import { TodoListComponent } from './todolist.component';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AddEditListComponent } from './nodejs/add-edit-list/add-edit-list.component';
 
 @NgModule({
@@ -14,7 +15,7 @@ import { AddEditListComponent } from './nodejs/add-edit-list/add-edit-list.compo
         NodejsComponent,
         AddEditListComponent
     ],
-    imports: [TodoListRouterModule],
+    imports: [TodoListRouterModule, CommonModule],
 })
 
 export class TodoListModule { }
