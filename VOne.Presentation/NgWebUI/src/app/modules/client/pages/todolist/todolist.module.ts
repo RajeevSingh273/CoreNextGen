@@ -5,6 +5,7 @@ import { JavaComponent } from './java/java.component';
 import { TodoListComponent } from './todolist.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AddEditListComponent } from './nodejs/add-edit-list/add-edit-list.component';
 
 @NgModule({
@@ -15,7 +16,7 @@ import { AddEditListComponent } from './nodejs/add-edit-list/add-edit-list.compo
         NodejsComponent,
         AddEditListComponent
     ],
-    imports: [TodoListRouterModule, CommonModule],
+    imports: [TodoListRouterModule, FormsModule, CommonModule],
 })
 
 export class TodoListModule { }

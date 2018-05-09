@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './modules/client/components/landing/landing.component';
 import { PageNotFoundComponent } from './modules/client/components/shared/page-not-found/page-not-found.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoutes: Routes = [
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     // RouterModule.forRoot(appRoutes, {useHash: true})
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule.forRoot()
   ],
   exports: [RouterModule]
 })

@@ -8,13 +8,11 @@
         <div class="col-md-12 mr-auto ml-auto">
             <div class="col-md-4">
                 <!-- <a class="btn btn-primary btn-round" (click)="toggelPopUp=!toggelPopUp">Add item</a> -->
-                <button type="button" class="btn btn-primary"  (click)="toggelPopUp=!toggelPopUp" data-toggle="modal" data-target="#myModal">
-                        Open modal
-                      </button>
+                <button type="button" class="btn btn-primary" (click)="open(content)" data-toggle="modal" data-target="#myModal">
+                    Open modal
+                </button>
             </div>
             <div class="col-md-4">
-                
-                {{toggelPopUp}}
             </div>
             <div class="col-md-4">
 
@@ -54,4 +52,43 @@
         </div>
     </div>
 </div>
-<app-add-edit-list *ngIf="toggelPopUp"></app-add-edit-list>
+<!-- <app-add-edit-list *ngIf="toggelPopUp"></app-add-edit-list> -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h3 class="modal-title">Add Mount Point</h3>
+        
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form (ngSubmit)="onSubmit(addMountForm)" #addMountForm="ngForm">
+        <div class="modal-body">
+            <!-- <form (ngSubmit)="onSubmit(addMountForm)" #addMountForm="ngForm"> -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label text-nowrap" for="archiveOrigin">Archive Origin</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ngModel id="archiveOrigin" name="archiveOrigin" placeholder="Archive Origin" />
+                </div>
+            </div>
+
+            <!-- <button type="submit" class="btn btn-default">Add</button> -->
+
+            <!-- </form> -->
+        </div>
+        <div class="modal-footer">
+            <div class="left-side">
+                <!-- <button type="submit" class="btn btn-default" >Add</button> -->
+            </div>
+            <div class="divider"></div>
+            <div class="right-side">
+                <button type="submit" class="btn btn-default">Add</button>
+                <button type="button" class="btn btn-danger" (click)="c('Close click')">DELETE</button>
+            </div>
+        </div>
+        <!-- <div class="modal-footer">
+           <button type="button" class="btn btn-default" (click)="c('Close click')">
+           Close
+           </button>
+        </div> -->
+    </form>
+</ng-template>
