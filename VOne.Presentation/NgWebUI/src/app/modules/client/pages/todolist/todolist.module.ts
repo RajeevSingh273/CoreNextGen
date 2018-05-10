@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddEditListComponent } from './nodejs/add-edit-list/add-edit-list.component';
+import { TodoService } from './todo.service';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { AddEditListComponent } from './nodejs/add-edit-list/add-edit-list.compo
         AddEditListComponent
     ],
     imports: [TodoListRouterModule, FormsModule, CommonModule],
+    providers: [TodoService]
 })
 
 export class TodoListModule { }
