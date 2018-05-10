@@ -1,9 +1,9 @@
-class Todo implements ITodo {
-  Id: number;
-  title: string;
-  description: string;
-  status: number;
-  priority: number;
-  created: Date;
-  updated: Date;
+export class Todo implements ITodo {
+  constructor(public Id: number,
+    public title: string,
+    public description: string,
+    public status: number,
+    public priority: number,
+    public created: Date,
+    public updated: Date) { }
 }
