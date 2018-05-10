@@ -6,8 +6,6 @@ import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-boo
 import { TodoService } from '../todo.service';
 import { Todo } from '../../../../../models/todo.model';
 
-
-
 @Component({
   selector: 'app-nodejs',
   templateUrl: './nodejs.component.html',
@@ -45,7 +43,7 @@ export class NodejsComponent implements OnInit {
     this.updatedList.push(new Todo(1, form.value.title, form.value.description, 1, 1, new Date(), new Date()));
 
     // this.todoService.setToDoList(list);
-    // this.updatedList = this.todoService.getToDoList(); 
+    // this.updatedList = this.todoService.getToDoList();
     console.log(list);
     this.modalReference.close();
 
