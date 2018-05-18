@@ -1,6 +1,6 @@
 {
   "database": {
-    "mongodb": "mongodb://localhost:19273/TelemetryDB",
+    "mongodb": "mongodb://localhost:27000/DataBaseName",
     "TodoCollection": "Todo"
   },
   "authorization": {
