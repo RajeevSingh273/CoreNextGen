@@ -13,7 +13,7 @@ var WebServerApi = (function () {
         this.app = app;
         console.log("inside web server api constructor");
         this.configureExpressRoute();
-        this.webServerPort = process.env.PORT || config.get("webServerPort");
+        this.webServerPort = config.get("webServerPort");
         this.configureStaticPath(app);
         this.configureMiddleware(app);
         this.configureBodyParser(app);
