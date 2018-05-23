@@ -1,16 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './modules/client/components/landing/landing.component';
 import { NavigationComponent } from './modules/client/components/shared/navigation/navigation.component';
 import { FooterComponent } from './modules/client/components/shared/footer/footer.component';
-import { ParentComponent } from './modules/client/parent/parent.component';
-import { JavaComponent } from './modules/client/todolist/java/java.component';
-import { DotnetcoreComponent } from './modules/client/todolist/dotnetcore/dotnetcore.component';
-import { NodejsComponent } from './modules/client/todolist/nodejs/nodejs.component';
 import { LayoutAdminComponent } from './pagelayout/layout-admin/layout-admin.component';
 import { LayoutClientComponent } from './pagelayout/layout-client/layout-client.component';
+import { PageNotFoundComponent } from './modules/client/components/shared/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +16,11 @@ import { LayoutClientComponent } from './pagelayout/layout-client/layout-client.
     LandingComponent,
     NavigationComponent,
     FooterComponent,
-    ParentComponent,
-    JavaComponent,
-    DotnetcoreComponent,
-    NodejsComponent,
     LayoutAdminComponent,
-    LayoutClientComponent
+    LayoutClientComponent,
+    PageNotFoundComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, CommonModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })

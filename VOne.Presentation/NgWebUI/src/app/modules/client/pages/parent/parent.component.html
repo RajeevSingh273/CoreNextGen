@@ -1,0 +1,23 @@
+<div class="main">
+    <div class="section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <h2 class="title">Parent child routing...</h2>
+                    <h5 class="description">Angular Router: Defining Child Routes...</h5>
+                    <br>
+                    <a class="btn btn-danger btn-round" [routerLink]="['chield1']">Chield 1</a>
+                    
+                    <a class="btn btn-danger btn-round" [routerLink]="['chield2']">Chield 2</a>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-8 mr-auto ml-auto">
+                <router-outlet></router-outlet>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

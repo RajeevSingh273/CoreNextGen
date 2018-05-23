@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mr-auto ml-auto">
+            <h5 class="description">Coming soon...</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mr-auto ml-auto">
+            <div class="col-md-4">
+                <!-- <a class="btn btn-primary btn-round" (click)="toggelPopUp=!toggelPopUp">Add item</a> -->
+                <button type="button" class="btn btn-primary" (click)="open(content)" data-toggle="modal" data-target="#myModal">
+                    Open modal
+                </button>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+
+            </div>
+
+        </div>
+        <div class="col-md-12 mr-auto ml-auto">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Created On</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="todo" *ngFor="let todo of updatedList">
+                        <td>{{todo.title}}</td>
+                        <td>{{todo.description}}</td>
+                        <td>{{todo.created | date}}</td>
+                        <td>{{todo.status}}</td>
+                        <td>
+                            <button type="button" class="btn btn-default" (click)="open(content)">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- <app-add-edit-list *ngIf="toggelPopUp"></app-add-edit-list> -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h3 class="modal-title">Add Mount Point</h3>
+
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form (ngSubmit)="onSubmit(addMountForm)" #addMountForm="ngForm">
+        <div class="modal-body">
+            <!-- <form (ngSubmit)="onSubmit(addMountForm)" #addMountForm="ngForm"> -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label text-nowrap" for="title">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ngModel id="title" name="title" placeholder="Title" [(ngModel)]="todoList.title"/>
+                </div>
+                <label class="col-sm-2 control-label text-nowrap" for="description">Description</label>
+                <div class="col-sm-10">
+                    <input type="text" id="description" ngModel name="description" placeholder="Description" class="form-control" [(ngModel)]="todoList.description"/>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="left-side">
+            </div>
+            <div class="divider"></div>
+            <div class="right-side">
+                <button type="submit" class="btn btn-default">Add</button>
+                <button type="button" class="btn btn-danger" (click)="addMountForm.reset()">Reset</button>
+            </div>
+        </div>
+
+    </form>
+</ng-template>
