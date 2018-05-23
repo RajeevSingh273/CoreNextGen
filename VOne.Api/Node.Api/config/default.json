@@ -1,6 +1,6 @@
 {
   "database": {
-    "mongodb": "mongodb://localhost:27000/DataBaseName",
+    "mongodb": "mongodb://localhost:27304/VOne",
     "TodoCollection": "Todo"
   },
   "authorization": {

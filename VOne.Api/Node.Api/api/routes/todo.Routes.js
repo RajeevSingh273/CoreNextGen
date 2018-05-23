@@ -9,7 +9,10 @@ var TodoRoutes = (function () {
         this.init();
     }
     TodoRoutes.prototype.init = function () {       
-        this.router.get('/gettodolist',  this.todoController.GetTodoList);       
+        this.router.get('/gettodolist',  this.todoController.GetTodoList); 
+        this.router.post('/addtodo',  this.todoController.AddTodo); 
+        this.router.put('/edittodo',  this.todoController.EditTodo);
+        this.router.delete('/deletetodo',  this.todoController.DeleteTodo);  
     };
     return TodoRoutes;
 }());

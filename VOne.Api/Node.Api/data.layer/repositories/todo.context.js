@@ -22,6 +22,45 @@ var TodoContext = (function () {
         })
     };
 
+    TodoContext.prototype.AddTodoMONGO = function (dQuery) {
+        return new Promise(function (resolve, reject) {
+            var ObjTodoRepository = new todoRepository.TodoRepository()
+            ObjTodoRepository.AddTodoMONGO(dQuery, function (err, result) {
+                if (err) {
+                    resolve((err, null));
+                } else {
+                    resolve((null, result));
+                }
+            });
+        })
+    };
+
+    TodoContext.prototype.EditTodoMONGO = function (dQuery) {
+        return new Promise(function (resolve, reject) {
+            var ObjTodoRepository = new todoRepository.TodoRepository()
+            ObjTodoRepository.EditTodoMONGO(dQuery, function (err, result) {
+                if (err) {
+                    resolve((err, null));
+                } else {
+                    resolve((null, result));
+                }
+            });
+        })
+    };
+
+    TodoContext.prototype.DeleteTodoMONGO = function (dQuery) {
+        return new Promise(function (resolve, reject) {
+            var ObjTodoRepository = new todoRepository.TodoRepository()
+            ObjTodoRepository.DeleteTodoMONGO(dQuery, function (err, result) {
+                if (err) {
+                    resolve((err, null));
+                } else {
+                    resolve((null, result));
+                }
+            });
+        })
+    };
+
     TodoContext.prototype.GetTodoListSQL = function (dQuery) {
         return new Promise(function (resolve, reject) {
             var ObjTodoRepository = new todoRepository.TodoRepository()

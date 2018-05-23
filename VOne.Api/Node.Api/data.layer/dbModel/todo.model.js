@@ -4,15 +4,18 @@ var mongoose = require("mongoose");
 var config = require("config");
 
 var todoList = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+//     _id: mongoose.Schema.Types.ObjectId,
     Id: {
         type: Number
     },
     status: {
-        type: Number
+        type: Number,
+        default: 1
+
     },
     priority: {
-        type: Number
+        type: Number,
+        default: 1
     }
     ,
     title: {
@@ -22,11 +25,13 @@ var todoList = new mongoose.Schema({
         type: String
     },
     created: {
-        type: Date
+        type: Date,
+        default: new Date
     },
 
     updated: {
-        type: Date
+        type: Date,
+        default: new Date
     },
 
 });

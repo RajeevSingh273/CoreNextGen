@@ -3,9 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 // Model Function for Querying API
 var Query = (function () {
-    function Query(UserId, Id, title, description, status, priority, created, updated) {
+    function Query(UserId, Id, Ids, title, description, status, priority, created, updated) {
         this.UserId = UserId;
         this.Id = Id;
+        this.Ids = Ids;
         this.title = title;
         this.description = description;
         this.status = status;
