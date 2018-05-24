@@ -155,6 +155,8 @@ var TodoRepository = (function () {
         var dbConnFactory = new dbConnectionFactory.DBConnectionFactory();
         dbConnFactory.dbSqlConnectionFactoryAcc('service').then(function (result) {
             result.executeSqlQuery(query, callback);
+        }).catch(function (e) {
+            callback(e, null);
         });
     };
 
