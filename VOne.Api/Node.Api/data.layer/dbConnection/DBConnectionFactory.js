@@ -96,8 +96,10 @@ var DBConnectionFactory = (function () {
                     });
                     break;
                 default:
-                    return null;
+                   reject(new Error('Sql Server Connection not exists for ' + type));
             }
+        }).catch(function (e) {
+            throw e;
         });
 
     };
