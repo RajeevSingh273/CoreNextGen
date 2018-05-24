@@ -10,27 +10,28 @@ var SqlDBConnectivity = (function () {
         return this.customerDBConnectionString;
     };
     SqlDBConnectivity.prototype.executeSqlQuery = function (queryStatement, next) {
-        console.log(this.customerDBConnectionString);
+        // console.log(this.customerDBConnectionString);
         var sqlConnection = new sql.ConnectionPool(this.customerDBConnectionString);
         sqlConnection.connect().then(function (connectionPool) {
             var sqlCommand = connectionPool.request();
-            console.log("queryStatement......", queryStatement);
+            // console.log("queryStatement......", queryStatement);
             sqlCommand.query(queryStatement).then(function (recordSet) {
                 sqlConnection.close();
                 next(null, recordSet);
             }).catch(function (err) {
-                console.log("Query Execution Failed......");
+                console.log("Query Execution Failed......", err);
+                // console.log("Query Execution Failed......");
                 sqlConnection.close();
                 next(err, null);
             });
         }).catch(function (err) {
             sqlConnection.close();
-            console.log("Sql Server Connection failed.......");
+            console.log("Sql Server Connection failed.......", err);
             next(err, null);
         });
     };
     SqlDBConnectivity.prototype.executeStoredProc = function (accountId, procedureName, parameters, next) {
-        console.log(this.customerDBConnectionString);
+        // console.log(this.customerDBConnectionString);
         var sqlConnection = new sql.ConnectionPool(this.getCustomerDatabaseConfig(accountId));
         sqlConnection.connect().then(function (connectionPool) {
             var sqlCommand = connectionPool.request();
@@ -52,7 +53,7 @@ var SqlDBConnectivity = (function () {
         });
     };
     SqlDBConnectivity.prototype.executeStoredProcWithOutPut = function (accountId, procedureName, inputparameters, outputparameters, next) {
-        console.log(this.customerDBConnectionString);
+        // console.log(this.customerDBConnectionString);
         var sqlConnection = new sql.ConnectionPool(this.getCustomerDatabaseConfig(accountId));
         sqlConnection.connect().then(function (connectionPool) {
             var sqlCommand = connectionPool.request();
