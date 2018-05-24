@@ -28,6 +28,11 @@ var TodoBusinessProcess = (function () {
                     objTodo = [];
                     callback(null, objTodo);
                 }
+            }).catch(function (err) {
+//                 _currentStatusRes.VehicleCurrentStatus = _currentStatus;
+//                 _currentStatusRes.ResponseCode = -1;
+//                 _currentStatusRes.ErrorMessage = 'Unknown Error: Any error not covered by the error codes below.';
+//                 callback(null, _currentStatusRes);
             });
         }
         else {
