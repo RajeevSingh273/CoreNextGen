@@ -13,26 +13,30 @@ var TodoContext = (function () {
         return new Promise(function (resolve, reject) {
             var ObjTodoRepository = new todoRepository.TodoRepository()
             ObjTodoRepository.GetTodoListMONGO(dQuery, function (err, result) {
-                if (err) {
-                    resolve((err, null));
+                 if (err) {
+                    resolve(err);
                 } else {
-                    resolve((null, result));
+                    resolve(result);
                 }
             });
-        })
+        }).catch(function (e) {
+            throw e;
+        });
     };
 
     TodoContext.prototype.AddTodoMONGO = function (dQuery) {
         return new Promise(function (resolve, reject) {
             var ObjTodoRepository = new todoRepository.TodoRepository()
             ObjTodoRepository.AddTodoMONGO(dQuery, function (err, result) {
-                if (err) {
-                    resolve((err, null));
+                 if (err) {
+                    resolve(err);
                 } else {
-                    resolve((null, result));
+                    resolve(result);
                 }
             });
-        })
+        }).catch(function (e) {
+            throw e;
+        });
     };
 
     TodoContext.prototype.EditTodoMONGO = function (dQuery) {
@@ -40,25 +44,29 @@ var TodoContext = (function () {
             var ObjTodoRepository = new todoRepository.TodoRepository()
             ObjTodoRepository.EditTodoMONGO(dQuery, function (err, result) {
                 if (err) {
-                    resolve((err, null));
+                    resolve(err);
                 } else {
-                    resolve((null, result));
+                    resolve(result);
                 }
             });
-        })
+        }).catch(function (e) {
+            throw e;
+        });
     };
 
     TodoContext.prototype.DeleteTodoMONGO = function (dQuery) {
         return new Promise(function (resolve, reject) {
             var ObjTodoRepository = new todoRepository.TodoRepository()
             ObjTodoRepository.DeleteTodoMONGO(dQuery, function (err, result) {
-                if (err) {
-                    resolve((err, null));
+                 if (err) {
+                    resolve(err);
                 } else {
-                    resolve((null, result));
+                    resolve(result);
                 }
             });
-        })
+        }).catch(function (e) {
+            throw e;
+        });
     };
 
     TodoContext.prototype.GetTodoListSQL = function (dQuery) {
@@ -66,12 +74,14 @@ var TodoContext = (function () {
             var ObjTodoRepository = new todoRepository.TodoRepository()
             ObjTodoRepository.GetTodoListSQL(dQuery, function (err, result) {
                 if (err) {
-                    resolve((err, null));
+                    resolve(err);
                 } else {
-                    resolve((null, result));
+                    resolve(result);
                 }
             });
-        })
+        }).catch(function (e) {
+            throw e;
+        });
     };
 
     return TodoContext;
