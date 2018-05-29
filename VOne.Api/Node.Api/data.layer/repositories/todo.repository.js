@@ -22,12 +22,12 @@ var TodoRepository = (function () {
             objDBConnFact.dbMongoOpenConn();
             var TodoCollection = mongoose.model(config.get('database.TodoCollection'));
             var Qry;
-            if (_query.Id === -999) {
-                Qry = [{ $match: { "UserId": +_query.UserId } }, { $sort: { Timestamp: -1 } }];
+            if (+_query.Id === -999) {
+                Qry = [{ $sort: { Timestamp: -1 } }];
             } else {
-                Qry = [{ $match: { "UserId": +_query.UserId, Id: _query.Id } }, { $sort: { Timestamp: -1 } }];
+                // Qry = [{ $match: { "UserId": +_query.UserId, _id: mongoose.Types.ObjectId(_query.Id) } }, { $sort: { Timestamp: -1 } }];
+                Qry = [{ $match: { _id: mongoose.Types.ObjectId(_query.Id) } }, { $sort: { Timestamp: -1 } }];
             }
-
             TodoCollection.aggregate(Qry)
                 .exec(function (err, result) {
                     if (err) {
@@ -35,13 +35,7 @@ var TodoRepository = (function () {
                         callback(err, null);
                     }
                     else {
-                        if (err) {
-                            console.log(err);
-                            objDBConnFact.dbMongoCloseConn();
-                            callback(err, null);
-                        } else {
-                            callback(null, result);
-                        }
+                        callback(null, result);
                     }
                 });
         }
@@ -84,8 +78,8 @@ var TodoRepository = (function () {
             _query = Query;
             objDBConnFact.dbMongoOpenConn();
             var TodoCollection = mongoose.model(config.get('database.TodoCollection'));
-            TodoCollection.findById({ _id: geofenceId }, ((err, todorslt) => {
-
+            TodoCollection.findById({ _id: mongoose.Types.ObjectId(_query.Id) }, ((err, todorslt) => {
+                console.log(todorslt);
                 if (err) {
                     objDBConnFact.dbMongoCloseConn();
                     callback(err, null);
@@ -101,11 +95,10 @@ var TodoRepository = (function () {
                             objDBConnFact.dbMongoCloseConn();
                             callback(errSave, null);
                         } else {
+                            objDBConnFact.dbMongoCloseConn();
                             callback(null, rsltSave);
                         }
-                    })
-
-
+                    });
                 }
             }));
         }
@@ -114,36 +107,25 @@ var TodoRepository = (function () {
         }
     };
 
-    TodoRepository.prototype.DeleteTodoListMONGO = function (Query, callback) {
+    TodoRepository.prototype.DeleteTodoMONGO = function (Query, callback) {
         var objDBConnFact = new dbConnectionFactory.DBConnectionFactory();
         try {
             var _query = new todo.Query();
             _query = Query;
             objDBConnFact.dbMongoOpenConn();
+            var ids = _query.Ids.split(',');
             var TodoCollection = mongoose.model(config.get('database.TodoCollection'));
-            var Qry;
-            if (_query.Id === -999) {
-                Qry = [{ $match: { "UserId": +_query.UserId } }, { $sort: { Timestamp: -1 } }];
-            } else {
-                Qry = [{ $match: { "UserId": +_query.UserId, Id: _query.Id } }, { $sort: { Timestamp: -1 } }];
-            }
-
-            TodoCollection.aggregate(Qry)
-                .exec(function (err, result) {
-                    if (err) {
-                        objDBConnFact.dbMongoCloseConn();
-                        callback(err, null);
-                    }
-                    else {
-                        if (err) {
-                            console.log(err);
-                            objDBConnFact.dbMongoCloseConn();
-                            callback(err, null);
-                        } else {
-                            callback(null, result);
-                        }
-                    }
-                });
+            TodoCollection.remove({ '_id': { '$in': ids } }, function (err) {
+                if (err) {
+                    console.log(err);
+                    objDBConnFact.dbMongoCloseConn();
+                    callback(errSave, null);
+                }
+                else {
+                    objDBConnFact.dbMongoCloseConn();
+                    callback(null, _query.Ids);
+                }
+            });
         }
         finally {
             objDBConnFact.dbMongoCloseConn();
