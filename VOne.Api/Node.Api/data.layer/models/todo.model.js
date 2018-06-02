@@ -18,9 +18,9 @@ exports.Query = Query;
 
 //  Model function for Response => Used in ()
 var TodoResponse = (function () {
-    function TodoResponse(ResponseCode, ErrorMessage, Todo) {
+    function TodoResponse(ResponseCode, Message, Todo) {
         this.ResponseCode = ResponseCode;
-        this.ErrorMessage = ErrorMessage;
+        this.Message = Message;
         this.Todo = Todo;
     }
     return TodoResponse;
