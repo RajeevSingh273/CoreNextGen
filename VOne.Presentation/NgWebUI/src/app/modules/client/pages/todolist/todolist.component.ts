@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todolist.component.css']
 })
 export class TodoListComponent implements OnInit {
+  isChield: true;
+  tttt: 'test';
   constructor() {}
 
   ngOnInit() {}

@@ -1,0 +1,42 @@
+{
+  "database": {
+    "mongodb": "mongodb://localhost:19273/TelemetryDB",
+    "TodoCollection": "Todo"
+  },
+  "authorization": {
+    "database": {
+      "adminConnectionString": "mssql://sa:pa55@MachineName/instanceName/DataBaseName",
+      "customerConnectionString": "mssql://sa:pa55@MachineName/instanceName/DataBaseName"
+    },
+    "mapping": [
+      {
+        "key": "instanceName",
+        "value": "MachineName"
+      },
+      {
+        "key": "localhost",
+        "value": "localhost"
+      }
+    ],
+    "sessionData": "20170101",
+    "sessionTimeOutInMinutes": 10,
+    "enableLogin": true
+  },
+  "customerDatabase": {
+    "server": "MachineName",
+    "database": "DataBaseName",
+    "user": "sa",
+    "password": "pa55"
+  },
+  "adminDatabase": {
+    "server": "MC0QF1HC",
+    "database": "DataBaseName",
+    "user": "sa",
+    "password": "pa55"
+  },
+  "httpMethodName": {
+    "postMethod": "POST",
+    "getMethod": "GET"
+  },
+  "webServerPort": 3000
+}
