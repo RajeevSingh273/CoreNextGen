@@ -20,11 +20,13 @@ var TodoRepository = (function () {
             objDBConnFact.dbMongoOpenConn();
             var TodoCollection = mongoose.model(config.get('database.TodoCollection'));
             var Qry;
-
             if (query.Id === -999) {
                 Qry = [{ $match: { _id: query.Id } }, { $sort: { updated: -1 } }];
             } else {
                 Qry = [{ $sort: { updated: -1 } }];
+            if (+_query.Id === -999) {
+                Qry = [{ $sort: { Timestamp: -1 } }];
+            } else {
             if (+_query.Id === -999) {
                 Qry = [{ $sort: { Timestamp: -1 } }];
             } else {
@@ -84,11 +86,8 @@ var TodoRepository = (function () {
             _query = Query;
             objDBConnFact.dbMongoOpenConn();
             var TodoCollection = mongoose.model(config.get('database.TodoCollection'));
-            TodoCollection.findById({ _id: _query.Id }, ((err, todorslt) => {
-
             TodoCollection.findById({ _id: mongoose.Types.ObjectId(_query.Id) }, ((err, todorslt) => {
                 console.log(todorslt);
-
                 if (err) {
                     objDBConnFact.dbMongoCloseConn();
                     callback(err, null);
