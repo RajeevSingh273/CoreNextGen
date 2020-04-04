@@ -36,7 +36,6 @@ var TodoBusinessProcess = (function () {
                     callback(null, _todoRes);
                 }
             }).catch(function (err) {
-                console.log(err);
                 _todoRes.Todo = [];
                 _todoRes.ResponseCode = 500;
                 _todoRes.Message = 'Internal Server Error.';
