@@ -3,21 +3,63 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 mr-auto ml-auto">
-                    <h2 class="title">Todo List</h2>
-                    <h5 class="description">Using bellow API's.</h5>
+                    <br>fffffff {{tttt}} hhhhhhh
+                    <h5 class="description">Todo List with backend API's.{{tttt}}</h5>
                     <br>
-                    <a class="btn btn-danger btn-round" [routerLink]="['nodejs']">Nodejs</a>
-                    <a class="btn btn-danger btn-round" [routerLink]="['java']">Java</a>
-                    <a class="btn btn-danger btn-round" [routerLink]="['dotnetcore']">DotNetCore</a>
                 </div>
             </div>
-            <br/>
-            <br/>
             <div class="row">
-                <div class="col-md-8 mr-auto ml-auto">
-                    <router-outlet></router-outlet>
+                <div class="col-md-3 mr-auto">
+                    <div class="card card-pricing">
+                        <div class="card-body">
+                            <h6 class="card-category">Todo List: Node js</h6>
+                            <p class="card-description">
+                                This is good if you are using MEAN stack.
+                            </p>
+                            <div class="card-footer">
+                                <button class="btn btn-info btn-round" [routerLink]="['nodejs']" (click)="isChield!=isChield">Go => Todo List</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-md-3 mr-auto">
+                    <div class="card card-pricing">
+                        <div class="card-body">
+                            <h6 class="card-category">Todo List: Java</h6>
+
+                            <p class="card-description">
+                                This is good if you are form Java background..
+                            </p>
+                            <div class="card-footer">
+                                <button class="btn btn-info btn-round" [routerLink]="['java']" (click)="isChield!=isChield">Go => Todo List</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mr-auto">
+                    <div class="card card-pricing">
+                        <div class="card-body">
+                            <h6 class="card-category">Todo List: DotNetCore</h6>
+
+                            <p class="card-description">
+                                This is good if you are form .net Core background.
+                            </p>
+                            <div class="card-footer">
+                                <button class="btn btn-info btn-round" [routerLink]="['dotnetcore']" (click)="isChield!=isChield">Go => Todo List</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mr-auto ml-auto">
+                <router-outlet></router-outlet>
             </div>
 
         </div>
+        <div class="row">
+            <button class="btn btn-info btn-round" (cliek)="isChield!=isChield">  Back </button>
+        </div>
+
     </div>

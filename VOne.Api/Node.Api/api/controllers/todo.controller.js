@@ -17,10 +17,12 @@ var TodoController = (function () {
         var objTodoBusinessProcess = new todoBusinessProcess.TodoBusinessProcess();
         // objTodoBusinessProcess.GetTodoListSQL(Query, function (err, result) {
         objTodoBusinessProcess.GetTodoListMONGO(Query, function (err, result) {
+            console.log(err);
             if (err) {
                 res
                     .status(500)
-                    .json(err);
+                    .json(JSON.stringify(err))
+                    // .json(result);
             } else {
                 res.status(200)
                     .json(result);
@@ -30,6 +32,7 @@ var TodoController = (function () {
 
     TodoController.prototype.AddTodo = function (req, res) {
         var Query = new todo.Query();
+        Query.UserId = 1;
         Query.title = req.body.title;
         Query.description = req.body.description;
         Query.priority = req.body.priority;
@@ -50,10 +53,11 @@ var TodoController = (function () {
 
     TodoController.prototype.EditTodo = function (req, res) {
         var Query = new todo.Query();
-        Query.Id = req.query.id;
-        Query.title = req.query.title;
-        Query.description = req.query.description;
-        Query.priority = req.query.priority;
+        Query.UserId = 1;
+        Query.Id = req.body.id;
+        Query.title = req.body.title;
+        Query.description = req.body.description;
+        Query.priority = req.body.priority;
 
         var objTodoBusinessProcess = new todoBusinessProcess.TodoBusinessProcess();
         // objTodoBusinessProcess.GetTodoListSQL(Query, function (err, result) {
@@ -71,8 +75,8 @@ var TodoController = (function () {
 
     TodoController.prototype.DeleteTodo = function (req, res) {
         var Query = new todo.Query();
-        Query.Ids = req.query.ids;
-
+        Query.UserId = 1;
+        Query.Ids = req.body.ids;
         var objTodoBusinessProcess = new todoBusinessProcess.TodoBusinessProcess();
         // objTodoBusinessProcess.GetTodoListSQL(Query, function (err, result) {
         objTodoBusinessProcess.DeleteTodoMONGO(Query, function (err, result) {

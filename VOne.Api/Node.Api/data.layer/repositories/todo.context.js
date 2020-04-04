@@ -15,7 +15,7 @@ var TodoContext = (function () {
             ObjTodoRepository.GetTodoListMONGO(query, function (err, result) {
                 console.log(result)
                  if (err) {
-                    resolve(err);
+                    reject(err);
                 } else {
                     resolve(result);
                 }
@@ -31,7 +31,7 @@ var TodoContext = (function () {
             var ObjTodoRepository = new todoRepository.TodoRepository()
             ObjTodoRepository.AddTodoMONGO(dQuery, function (err, result) {
                  if (err) {
-                    resolve(err);
+                    reject(err);
                 } else {
                     resolve(result);
                 }
@@ -46,7 +46,7 @@ var TodoContext = (function () {
             var ObjTodoRepository = new todoRepository.TodoRepository()
             ObjTodoRepository.EditTodoMONGO(dQuery, function (err, result) {
                 if (err) {
-                    resolve(err);
+                    reject(err);
                 } else {
                     resolve(result);
                 }
@@ -61,7 +61,7 @@ var TodoContext = (function () {
             var ObjTodoRepository = new todoRepository.TodoRepository()
             ObjTodoRepository.DeleteTodoMONGO(dQuery, function (err, result) {
                  if (err) {
-                    resolve(err);
+                    reject(err);
                 } else {
                     resolve(result);
                 }
@@ -76,7 +76,7 @@ var TodoContext = (function () {
             var ObjTodoRepository = new todoRepository.TodoRepository()
             ObjTodoRepository.GetTodoListSQL(dQuery, function (err, result) {
                 if (err) {
-                    resolve(err);
+                    reject(err);
                 } else {
                     resolve(result);
                 }
