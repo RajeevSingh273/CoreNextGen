@@ -13,7 +13,6 @@ var TodoRepository = (function () {
     function TodoRepository() {
 
     }
-
     TodoRepository.prototype.GetTodoListMONGO = function (query, callback) {
         var objDBConnFact = new dbConnectionFactory.DBConnectionFactory();
         try {
@@ -34,7 +33,6 @@ var TodoRepository = (function () {
             }
             TodoCollection.aggregate(Qry)
                 .exec(function (err, result) {
-                    console.log(result)
                     if (err) {
                         objDBConnFact.dbMongoCloseConn();
                         callback(err, null);
