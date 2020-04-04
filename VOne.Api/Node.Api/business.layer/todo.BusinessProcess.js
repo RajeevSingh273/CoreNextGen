@@ -12,10 +12,12 @@ var TodoBusinessProcess = (function () {
     }
 
     TodoBusinessProcess.prototype.GetTodoListMONGO = function (query, callback) {
-        var Query = new todo.Query();
-        var Todo = new todo.Todo();
-        Query = query;
         var _todoRes = new todo.TodoResponse();
+        if (query.Id) {
+            var objTodoContext = new todoContext.TodoContext();
+            objTodoContext.GetTodoListMONGO(query).then(function (result) {
+                if (result.length > 0) {
+                    var _todoMap = TodoMap(query, result);
         var _todo = new todo.Todo();
         if (Query.Id) {
             var objTodoContext = new todoContext.TodoContext();

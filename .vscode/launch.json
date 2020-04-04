@@ -8,14 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\VOne.Api\\Node.Api/main.js"
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach",
-            "port": 9229
+            "program": "${file}"
         }
-      
     ]
 }

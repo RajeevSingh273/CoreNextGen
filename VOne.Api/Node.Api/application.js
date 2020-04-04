@@ -4,8 +4,10 @@ var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
 var todoRoutes = require("./api/routes/todo.Routes");
+var attackDataRoutes=require("./api/routes/attackData.Routes");
 
 var todoCollection = require("./data.layer/dbModel/todo.model");
+var attackDataCollection = require("./data.layer/dbModel/attackData.model");
 
 var config = require("config");
 var WebServerApi = (function () {
@@ -23,6 +25,7 @@ var WebServerApi = (function () {
 
     WebServerApi.prototype.registerSchema = function () {
         todoCollection.todoSchema.RegisterTodoModelData();
+        attackDataCollection.attackSchema.RegisterAttackModelData();
     };
 
     WebServerApi.prototype.configureExpressRoute = function () {
@@ -57,6 +60,7 @@ var WebServerApi = (function () {
         //console.log("Inside ConfigureRoutes");
         app.use("/api/", this.router);
         this.objTodoRoutes = new todoRoutes.TodoRoutes(this.router);
+        this.objAttackDataRoutes = new attackDataRoutes.AttackDataRoutes(this.router);
     };
 
     WebServerApi.prototype.run = function () {

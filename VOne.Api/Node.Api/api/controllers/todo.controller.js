@@ -13,7 +13,7 @@ var TodoController = (function () {
         var Query = new todo.Query();
         Query.UserId = 1;
         Query.Id = req.query.id;
-
+        console.log(Query)
         var objTodoBusinessProcess = new todoBusinessProcess.TodoBusinessProcess();
         // objTodoBusinessProcess.GetTodoListSQL(Query, function (err, result) {
         objTodoBusinessProcess.GetTodoListMONGO(Query, function (err, result) {
