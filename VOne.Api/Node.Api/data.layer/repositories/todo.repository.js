@@ -29,9 +29,9 @@ var TodoRepository = (function () {
             if (+_query.Id === -999) {
                 Qry = [{ $sort: { Timestamp: -1 } }];
             } else {
-            if (+_query.Id === -999) {
-                Qry = [{ $sort: { Timestamp: -1 } }];
+           
             } else {
+                // Qry = [{ $match: { "UserId": +_query.UserId, _id: mongoose.Types.ObjectId(_query.Id) } }, { $sort: { Timestamp: -1 } }];
                 Qry = [{ $match: { _id: mongoose.Types.ObjectId(_query.Id) } }, { $sort: { Timestamp: -1 } }];
             }
             TodoCollection.aggregate(Qry)
