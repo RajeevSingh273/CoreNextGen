@@ -9,10 +9,11 @@ var TodoContext = (function () {
     function TodoContext() {
     }
 
-    TodoContext.prototype.GetTodoListMONGO = function (dQuery) {
+    TodoContext.prototype.GetTodoListMONGO = function (query) {
         return new Promise(function (resolve, reject) {
             var ObjTodoRepository = new todoRepository.TodoRepository()
-            ObjTodoRepository.GetTodoListMONGO(dQuery, function (err, result) {
+            ObjTodoRepository.GetTodoListMONGO(query, function (err, result) {
+                console.log(result)
                  if (err) {
                     resolve(err);
                 } else {
@@ -21,6 +22,7 @@ var TodoContext = (function () {
             });
         }).catch(function (e) {
             throw e;
+            // reject(e);
         });
     };
 

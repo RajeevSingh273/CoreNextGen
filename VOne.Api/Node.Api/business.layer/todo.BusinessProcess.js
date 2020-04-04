@@ -12,16 +12,12 @@ var TodoBusinessProcess = (function () {
     }
 
     TodoBusinessProcess.prototype.GetTodoListMONGO = function (query, callback) {
-        var Query = new todo.Query();
-        var Todo = new todo.Todo();
-        Query = query;
         var _todoRes = new todo.TodoResponse();
-        var _todo = new todo.Todo();
-        if (Query.title) {
+        if (query.Id) {
             var objTodoContext = new todoContext.TodoContext();
-            objTodoContext.GetTodoListMONGO(Query).then(function (result) {
+            objTodoContext.GetTodoListMONGO(query).then(function (result) {
                 if (result.length > 0) {
-                    var _todoMap = TodoMap(Query, result);
+                    var _todoMap = TodoMap(query, result);
                     callback(null, _todoMap);
                 } else {
                     var objTodo = new todo.Todo();
@@ -29,10 +25,7 @@ var TodoBusinessProcess = (function () {
                     callback(null, objTodo);
                 }
             }).catch(function (err) {
-//                 _currentStatusRes.VehicleCurrentStatus = _currentStatus;
-//                 _currentStatusRes.ResponseCode = -1;
-//                 _currentStatusRes.ErrorMessage = 'Unknown Error: Any error not covered by the error codes below.';
-//                 callback(null, _currentStatusRes);
+                console.log(err);
             });
         }
         else {

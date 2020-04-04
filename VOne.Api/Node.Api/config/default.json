@@ -1,13 +1,10 @@
 {
   "database": {
-    "mongodb": "mongodb://localhost:27304/VOne",
-    "TodoCollection": "Todo"
+    "mongodb": "mongodb://localhost:27304/Support",
+    "TodoCollection": "Todo",
+    "AttackCollection": "Attack"
   },
   "authorization": {
-    "database": {
-      "adminConnectionString": "mssql://sa:pa55@MachineName/instanceName/DataBaseName",
-      "customerConnectionString": "mssql://sa:pa55@MachineName/instanceName/DataBaseName"
-    },
     "mapping": [
       {
         "key": "instanceName",
@@ -18,25 +15,21 @@
         "value": "localhost"
       }
     ],
-    "sessionData": "20170101",
+    "sessionData": "20181029",
     "sessionTimeOutInMinutes": 10,
-    "enableLogin": true
-  },
-  "customerDatabase": {
-    "server": "MachineName",
-    "database": "DataBaseName",
-    "user": "sa",
-    "password": "pa55"
-  },
-  "adminDatabase": {
-    "server": "MC0QF1HC",
-    "database": "DataBaseName",
-    "user": "sa",
-    "password": "pa55"
+    "enableLogin": false
   },
   "httpMethodName": {
+    "getMethod": "GET",
+    "putMethod": "PUT",
     "postMethod": "POST",
-    "getMethod": "GET"
+    "deleteMethod": "DELETE"
+  },
+  "mailOptions": {
+    "host": "hostname",
+    "port": 465,
+    "user": "username",
+    "pass": "password"
   },
   "webServerPort": 3000
 }

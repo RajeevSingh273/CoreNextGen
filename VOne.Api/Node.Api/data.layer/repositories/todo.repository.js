@@ -14,34 +14,28 @@ var TodoRepository = (function () {
 
     }
 
-    TodoRepository.prototype.GetTodoListMONGO = function (Query, callback) {
+    TodoRepository.prototype.GetTodoListMONGO = function (query, callback) {
         var objDBConnFact = new dbConnectionFactory.DBConnectionFactory();
         try {
-            var _query = new todo.Query();
-            _query = Query;
             objDBConnFact.dbMongoOpenConn();
             var TodoCollection = mongoose.model(config.get('database.TodoCollection'));
             var Qry;
-            if (_query.Id === -999) {
-                Qry = [{ $match: { "UserId": +_query.UserId } }, { $sort: { Timestamp: -1 } }];
+
+            if (query.Id === -999) {
+                Qry = [{ $match: { _id: query.Id } }, { $sort: { updated: -1 } }];
             } else {
-                Qry = [{ $match: { "UserId": +_query.UserId, Id: _query.Id } }, { $sort: { Timestamp: -1 } }];
+                Qry = [{ $sort: { updated: -1 } }];
             }
 
             TodoCollection.aggregate(Qry)
                 .exec(function (err, result) {
+                    console.log(result)
                     if (err) {
                         objDBConnFact.dbMongoCloseConn();
                         callback(err, null);
-                    }
-                    else {
-                        if (err) {
-                            console.log(err);
-                            objDBConnFact.dbMongoCloseConn();
-                            callback(err, null);
-                        } else {
-                            callback(null, result);
-                        }
+                    } else {
+                        objDBConnFact.dbMongoCloseConn();
+                        callback(null, result);
                     }
                 });
         }
@@ -84,8 +78,7 @@ var TodoRepository = (function () {
             _query = Query;
             objDBConnFact.dbMongoOpenConn();
             var TodoCollection = mongoose.model(config.get('database.TodoCollection'));
-            TodoCollection.findById({ _id: geofenceId }, ((err, todorslt) => {
-
+            TodoCollection.findById({ _id: _query.Id }, ((err, todorslt) => {
                 if (err) {
                     objDBConnFact.dbMongoCloseConn();
                     callback(err, null);
