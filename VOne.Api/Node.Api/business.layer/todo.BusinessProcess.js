@@ -18,11 +18,22 @@ var TodoBusinessProcess = (function () {
             objTodoContext.GetTodoListMONGO(query).then(function (result) {
                 if (result.length > 0) {
                     var _todoMap = TodoMap(query, result);
+        var _todo = new todo.Todo();
+        if (Query.Id) {
+            var objTodoContext = new todoContext.TodoContext();
+            objTodoContext.GetTodoListMONGO(Query).then(function (result) {
+                console.log(result);
+                if (result.length > 0) {
+                    var _todoMap = TodoMap(Query, result);
+                    _todoRes.Todo = _todoMap;
+                    _todoRes.ResponseCode = 0;
+                    _todoRes.Message = 'Requested Operation Successful.';
                     callback(null, _todoMap);
                 } else {
-                    var objTodo = new todo.Todo();
-                    objTodo = [];
-                    callback(null, objTodo);
+                    _todoRes.Todo = [];
+                    _todoRes.ResponseCode = 0;
+                    _todoRes.Message = 'Todo List not found.';
+                    callback(null, _todoRes);
                 }
             }).catch(function (err) {
                 console.log(err);
@@ -31,7 +42,7 @@ var TodoBusinessProcess = (function () {
         else {
             _todoRes.Todo = [];
             _todoRes.ResponseCode = 21;
-            _todoRes.ErrorMessage = 'Invalid Id.';
+            _todoRes.Message = 'Invalid params.';
             callback(null, _todoRes);
         }
     };
@@ -44,9 +55,13 @@ var TodoBusinessProcess = (function () {
         var _todo = new todo.Todo();
         if (Query.title) {
             var objTodoContext = new todoContext.TodoContext();
-            objTodoContext.AddTodoMONGO(Query).then((result, err) => {
+            objTodoContext.AddTodoMONGO(Query).then((result) => {
+                console.log(result);
                 if (result) {
-                    callback(null, { message: "Todo saved successfully!" });
+                    _todoRes.Todo = result;
+                    _todoRes.ResponseCode = 0;
+                    _todoRes.Message = 'Requested Operation Successful.';
+                    callback(null, _todoRes);
                 } else {
                     callback(err, null);
                 }
@@ -55,7 +70,7 @@ var TodoBusinessProcess = (function () {
         else {
             _todoRes.Todo = [];
             _todoRes.ResponseCode = 21;
-            _todoRes.ErrorMessage = 'Invalid Id.';
+            _todoRes.Message = 'Invalid params.';
             callback(null, _todoRes);
         }
     };
@@ -68,9 +83,13 @@ var TodoBusinessProcess = (function () {
         var _todo = new todo.Todo();
         if (Query.title) {
             var objTodoContext = new todoContext.TodoContext();
-            objTodoContext.EditTodoMONGO(Query).then((err, result) => {
+            objTodoContext.EditTodoMONGO(Query).then((result) => {
+                console.log(result);
                 if (result) {
-                    callback(null, { message: "Todo Updated successfully!" });
+                    _todoRes.Todo = result;
+                    _todoRes.ResponseCode = 0;
+                    _todoRes.Message = 'Requested Operation Successful.';
+                    callback(null, _todoRes);
                 } else {
                     callback(err, null);
                 }
@@ -79,7 +98,7 @@ var TodoBusinessProcess = (function () {
         else {
             _todoRes.Todo = [];
             _todoRes.ResponseCode = 21;
-            _todoRes.ErrorMessage = 'Invalid Id.';
+            _todoRes.Message = 'Invalid params.';
             callback(null, _todoRes);
         }
     };
@@ -90,23 +109,21 @@ var TodoBusinessProcess = (function () {
         Query = query;
         var _todoRes = new todo.TodoResponse();
         var _todo = new todo.Todo();
-        if (Query.title) {
+        if (Query.Ids) {
             var objTodoContext = new todoContext.TodoContext();
             objTodoContext.DeleteTodoMONGO(Query).then(function (result) {
-                if (result.length > 0) {
-                    var _todoMap = TodoMap(Query, result);
-                    callback(null, _todoMap);
+                console.log(result);
+                if (result) {
+                    callback(null, { message: "Todo Updated successfully!" });
                 } else {
-                    var objTodo = new todo.Todo();
-                    objTodo = [];
-                    callback(null, objTodo);
+                    callback(err, null);
                 }
             });
         }
         else {
             _todoRes.Todo = [];
             _todoRes.ResponseCode = 21;
-            _todoRes.ErrorMessage = 'Invalid Id.';
+            _todoRes.Message = 'Invalid params.';
             callback(null, _todoRes);
         }
     };
@@ -135,7 +152,7 @@ var TodoBusinessProcess = (function () {
         else {
             _todoRes.Todo = _todo;
             _todoRes.ResponseCode = 21;
-            _todoRes.ErrorMessage = 'Invalid Id.';
+            _todoRes.Message = 'Invalid Id.';
             callback(null, _todoRes);
         }
     };
@@ -151,8 +168,9 @@ var TodoMap = function (dQuery, result) {
     var objTodoMapArr = new Array();
     if (result) {
         result.forEach(function (element) {
+            console.log(element)
             var objTodo = new todo.Todo();
-            objTodo.Id = element.Id;
+            objTodo.Id = element._id;
             objTodo.title = element.title;
             objTodo.description = element.title;
             objTodo.priority = element.priority;
