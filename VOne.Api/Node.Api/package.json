@@ -18,7 +18,7 @@
     "config": "^1.30.0",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.1",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "moment": "^2.22.1",
     "moment-timezone": "^0.5.17",
     "mongoose": "^5.7.5",
