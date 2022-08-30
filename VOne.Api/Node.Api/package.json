@@ -20,7 +20,7 @@
     "jsonwebtoken": "^8.2.1",
     "lodash": "^4.17.21",
     "moment": "^2.22.1",
-    "moment-timezone": "^0.5.17",
+    "moment-timezone": "^0.5.35",
     "mongoose": "^5.7.5",
     "mongorepository": "^1.1.1",
     "mssql": "^4.1.0",
